@@ -5,7 +5,12 @@ import SwiftUI
 extension Calendar {
     
     var dayOfWeekInitials: [String] {
-        veryShortWeekdaySymbols
+        Array(1...7).map { weekdayNameFrom(weekdayNumber: $0) }
+    }
+
+    func weekdayNameFrom(weekdayNumber: Int) -> String {
+        let dayIndex = ((weekdayNumber - 1) + (firstWeekday - 1)) % 7
+        return veryShortWeekdaySymbols[dayIndex]
     }
     
 }

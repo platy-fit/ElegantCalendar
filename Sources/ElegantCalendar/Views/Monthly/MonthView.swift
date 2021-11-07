@@ -158,11 +158,11 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
     private var dayOfWeekWithMonthAndDayText: some View {
         let monthDayText: String
         if numberOfDaysFromTodayToSelectedDate == -1 {
-            monthDayText = "Yesterday"
+            monthDayText = datasource?.yesterdayText() ?? "Yesterday"
         } else if numberOfDaysFromTodayToSelectedDate == 0 {
-            monthDayText = "Today"
+            monthDayText = datasource?.todayText() ?? "Today"
         } else if numberOfDaysFromTodayToSelectedDate == 1 {
-            monthDayText = "Tomorrow"
+            monthDayText = datasource?.tomorrowText() ?? "Tomorrow"
         } else {
             monthDayText = selectedDate!.dayOfWeekWithMonthAndDay
         }
@@ -174,7 +174,7 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
 
     private var daysFromTodayText: some View {
         let isBeforeToday = numberOfDaysFromTodayToSelectedDate < 0
-        let daysDescription = isBeforeToday ? "DAYS AGO" : "DAYS FROM TODAY"
+        let daysDescription = isBeforeToday ? datasource?.daysAgoText() ?? "DAYS AGO" : datasource?.daysFromTodayText() ?? "DAYS FROM TODAY"
 
         return Text("\(abs(numberOfDaysFromTodayToSelectedDate)) \(daysDescription)")
             .font(.system(size: 10))

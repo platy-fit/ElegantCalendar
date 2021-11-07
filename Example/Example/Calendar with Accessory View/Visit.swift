@@ -2,7 +2,11 @@
 
 import SwiftUI
 
-let currentCalendar = Calendar.current
+let currentCalendar: Calendar = {
+    var c = Calendar.current
+    c.locale = Locale.autoupdatingCurrent
+    return c
+}()
 let screen = UIScreen.main.bounds
 
 struct Visit {

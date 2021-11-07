@@ -10,6 +10,12 @@ public protocol MonthlyCalendarDataSource {
     func calendar(canSelectDate date: Date) -> Bool
     func calendar(viewForSelectedDate date: Date, dimensions size: CGSize) -> AnyView
 
+    func todayText() -> String
+    func tomorrowText() -> String
+    func yesterdayText() -> String
+    func daysAgoText() -> String
+    func daysFromTodayText() -> String
+
 }
 
 

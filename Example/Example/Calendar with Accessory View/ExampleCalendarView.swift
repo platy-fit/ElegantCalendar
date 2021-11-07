@@ -49,6 +49,27 @@ struct ExampleCalendarView: View {
 
 extension ExampleCalendarView: ElegantCalendarDataSource {
 
+    func todayText() -> String {
+        "Сегодня"
+    }
+
+    func tomorrowText() -> String {
+        "Завтра"
+    }
+
+    func yesterdayText() -> String {
+        "Завтра"
+    }
+
+    func daysAgoText() -> String {
+        "Завтра"
+    }
+
+    func daysFromTodayText() -> String {
+        "Завтра"
+    }
+
+
     func calendar(backgroundColorOpacityForDate date: Date) -> Double {
         let startOfDay = currentCalendar.startOfDay(for: date)
         return Double((visitsByDay[startOfDay]?.count ?? 0) + 3) / 15.0
